@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Eindopdracht_DP.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,17 @@ namespace Eindopdracht_DP.Views
         public OnboardingPage()
         {
             InitializeComponent();
+
+            LoadData();
+        }
+
+        private async Task LoadData()
+        {
+            await ExerciseRepository.GetAllExercisesAsync();
         }
     }
+
+
+
+
 }

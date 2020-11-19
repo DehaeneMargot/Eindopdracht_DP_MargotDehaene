@@ -1,4 +1,5 @@
-﻿using Eindopdracht_DP.Views;
+﻿using Eindopdracht_DP.Repositories;
+using Eindopdracht_DP.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +17,17 @@ namespace Eindopdracht_DP
         {
             InitializeComponent();
 
-            if (VersionTracking.IsFirstLaunchEver)
-            {
-                Navigation.PushModalAsync(new OnboardingPage());
-            }
+            LoadData();
+
+            //if (VersionTracking.IsFirstLaunchEver)
+            //{
+            //    Navigation.PushModalAsync(new OnboardingPage());
+            //}
+        }
+
+        private async Task LoadData()
+        {
+            await ExerciseRepository.GetAllExercisesAsync();
         }
     }
 }
